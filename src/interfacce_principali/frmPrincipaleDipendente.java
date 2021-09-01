@@ -28,21 +28,96 @@ public class frmPrincipaleDipendente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnDatiAnag = new javax.swing.JButton();
+        btnGestMov = new javax.swing.JButton();
+        btnGestConti = new javax.swing.JButton();
+        btnGestCarte = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnDatiAnag.setText("gestione dati anagrafici");
+        btnDatiAnag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatiAnagActionPerformed(evt);
+            }
+        });
+
+        btnGestMov.setText("gestione movimenti");
+        btnGestMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestMovActionPerformed(evt);
+            }
+        });
+
+        btnGestConti.setText("gestione conti");
+        btnGestConti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestContiActionPerformed(evt);
+            }
+        });
+
+        btnGestCarte.setText("gestione carte");
+        btnGestCarte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestCarteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDatiAnag, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(btnGestCarte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGestMov, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestConti, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDatiAnag)
+                    .addComponent(btnGestConti))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGestCarte)
+                    .addComponent(btnGestMov))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGestContiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestContiActionPerformed
+        // TODO add your handling code here:
+        new interfacce_DipendenteBanca.frmGestioneConti().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGestContiActionPerformed
+
+    private void btnGestCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestCarteActionPerformed
+        // TODO add your handling code here: bennagay
+        new interfacce_DipendenteBanca.frmGestioneCarte().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGestCarteActionPerformed
+
+    private void btnDatiAnagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatiAnagActionPerformed
+        // TODO add your handling code here:
+        new interfacce_DipendenteBanca.frmGestioneDatiAnagrafici().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnDatiAnagActionPerformed
+
+    private void btnGestMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestMovActionPerformed
+        // TODO add your handling code here:
+        new interfacce_DipendenteBanca.frmGestioneMovimenti().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnGestMovActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +155,9 @@ public class frmPrincipaleDipendente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDatiAnag;
+    private javax.swing.JButton btnGestCarte;
+    private javax.swing.JButton btnGestConti;
+    private javax.swing.JButton btnGestMov;
     // End of variables declaration//GEN-END:variables
 }
