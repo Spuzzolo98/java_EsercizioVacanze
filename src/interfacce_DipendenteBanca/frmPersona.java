@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package interfacce_DipendenteBanca;
+import static Utils.DateUtils.GetDate;
 import static Utils.DateUtils.getLocalDate;
 import classi.Persona;
 import javax.swing.JFrame;
@@ -28,6 +29,10 @@ public class frmPersona extends javax.swing.JFrame {
             initComponents();
             opener=j;
             this.codicef=cf;
+            if (!caricaPersona())
+        {
+            btnIns.setEnabled(false);
+        }
         }
     
     
@@ -77,6 +82,12 @@ public class frmPersona extends javax.swing.JFrame {
         lblCognome.setText("Cognome");
 
         lblCF.setText("Codice Fiscale");
+
+        txtCF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCFActionPerformed(evt);
+            }
+        });
 
         lblDataN.setText("Data Nascita");
 
@@ -177,9 +188,70 @@ public class frmPersona extends javax.swing.JFrame {
         messaggioErrore("Errore durante il salvataggio: " + g.getDescrizioneErrore(), "Errore");
     }//GEN-LAST:event_btnInsActionPerformed
 
+    
+        private void riempiFormPersona(Persona p)
+    {   
+        txtId.setText(String.valueOf(p.getId()));
+        txtNome.setText(p.getNome());
+        txtCognome.setText(p.getCognome());
+        txtCF.setText(p.getCf());
+        dcDataN.setDate(GetDate(p.getDataNascita()));
+
+    }
+    
+    
+        private boolean caricaPersona()
+    {
+        FunzioniPersona funzPersona = new FunzioniPersona();
+        int pos = funzPersona.posizionePersonaByCF(codicef);
+        
+        if (funzPersona.isSuccesso())
+        {            
+            cfPos = pos;
+            // se la posizione != -1 allora la persona è stata trovata
+            if (pos != -1)
+            {
+                lblTitolo.setText("MODIFICA PERSONA");
+                GestionePersona gestPers = new GestionePersona();
+                // carico i dati della persona che si trova alla posizione pos dal file
+                Persona p = gestPers.caricaPersona(pos);
+                
+                if (gestPers.isSuccesso())
+                {
+                    // inserisco i dati della persona caricata dal file sulla maschera
+                    riempiFormPersona(p);
+                    txtCF.setEnabled(false);
+                    return true;
+                }
+                else
+                {
+                    messaggioErrore("Errore: " + gestPers.getDescrizioneErrore(), "Errore");
+                    return false;
+                }
+            }
+            else // pos è = -1, significa che la persona non esiste
+            {
+                lblTitolo.setText("INSERIMENTO PERSONA");
+                txtCF.setText(codicef);
+                txtCF.setEnabled(false);
+                return true;
+            }
+        }
+        else
+        {
+            messaggioErrore("Errore: " + funzPersona.getDescrizioneErrore(), "Errore");
+            return false;
+        }
+    }
+    
+    
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void txtCFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCFActionPerformed
 
     /**
      * @param args the command line arguments

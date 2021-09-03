@@ -106,8 +106,6 @@ public class GestionePersona extends Risultato {
                 p.setCf(vettRiga[3]);
                 String[] vettData = vettRiga[4].split("-");
                 p.setDataNascita(LocalDate.of(Integer.parseInt(vettData[0]),Integer.parseInt(vettData[1]),Integer.parseInt(vettData[2])));
-                if (!vettRiga[5].equals("")) p.setIdCittaNascita(Integer.parseInt(vettRiga[5]));
-                if (!vettRiga[6].equals("")) p.setIdSport(Integer.parseInt(vettRiga[6]));
                                 
                 lista.add(p);
             }
@@ -148,8 +146,6 @@ public class GestionePersona extends Risultato {
             p.setCf(vettRiga[3]);
             String[] vettData = vettRiga[4].split("-");
             p.setDataNascita(LocalDate.of(Integer.parseInt(vettData[0]),Integer.parseInt(vettData[1]),Integer.parseInt(vettData[2])));
-            if (!vettRiga[5].equals("")) p.setIdCittaNascita(Integer.parseInt(vettRiga[5]));
-            if (!vettRiga[6].equals("")) p.setIdSport(Integer.parseInt(vettRiga[6]));
                 
             setSuccesso(true);
             return p;
@@ -169,13 +165,9 @@ public class GestionePersona extends Risultato {
      * @return la stringa contenente i dati della persona separati dal separatore sep
      */
     private String PreparaDati(Persona p)
-    {         
-        String idCittaNStr = "", idSportStr = "";
-        if (p.getIdCittaNascita() > 0) idCittaNStr = String.valueOf(p.getIdCittaNascita());
-        if (p.getIdSport() > 0) idSportStr = String.valueOf(p.getIdSport());
-        
+    {              
         String dati = String.valueOf(p.getId()) + sep + p.getNome() + sep + p.getCognome()
-                 + sep + p.getCf() + sep + p.getDataNascita().toString() + sep + idCittaNStr + sep + idSportStr;
+                 + sep + p.getCf() + sep + p.getDataNascita().toString();
         return dati;
     }
 }
