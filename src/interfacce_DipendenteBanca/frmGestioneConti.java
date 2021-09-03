@@ -5,6 +5,7 @@
  */
 package interfacce_DipendenteBanca;
 
+import logica.GestioneConti.*;
 
 /**
  *
@@ -128,7 +129,10 @@ public class frmGestioneConti extends javax.swing.JFrame {
     }//GEN-LAST:event_TextcodicefActionPerformed
 
     private void btnCreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaActionPerformed
-        
+        logica.GestioneConti g = new logica.GestioneConti();
+        if(g.ControlloUser(Textuser.getText())){
+            System.out.println("nome utente già inserito");
+        }
         
         
     }//GEN-LAST:event_btnCreaActionPerformed
