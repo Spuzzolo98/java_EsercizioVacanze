@@ -6,6 +6,8 @@
 package interfacce_DipendenteBanca;
 
 import static Utils.Messaggistica.messaggioErrore;
+import static Utils.Messaggistica.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -126,7 +128,7 @@ public class frmGestioneDatiAnagrafici extends javax.swing.JFrame {
         messaggioErrore("Inserire il codice fiscale!", "Attenzione");
         else
         {
-            FunzioniPersona funzPersona = new FunzioniPersona();
+            logica.FunzioniPersona funzPersona = new logica.FunzioniPersona();
             int pos = funzPersona.posizionePersonaByCF(txtCF.getText());
 
             if (funzPersona.isSuccesso())
@@ -136,7 +138,7 @@ public class frmGestioneDatiAnagrafici extends javax.swing.JFrame {
                     int bottoneSel = confermaYesNo("Confermare l'eliminazione?", "Attenzione");
                     if(bottoneSel == JOptionPane.YES_OPTION)
                     {
-                        GestionePersona gestPers = new GestionePersona();
+                        logica.GestionePersona gestPers = new logica.GestionePersona();
                         gestPers.eliminaPersona(pos);
                         if (gestPers.isSuccesso())
                         {
