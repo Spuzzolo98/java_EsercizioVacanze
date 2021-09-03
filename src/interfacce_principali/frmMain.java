@@ -11,7 +11,10 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author pietr
+ * ù
+ * ciao
  */
+//ciao
 public class frmMain extends javax.swing.JFrame {
 
     /**
